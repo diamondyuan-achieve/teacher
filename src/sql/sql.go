@@ -8,12 +8,14 @@ import (
 	"strings"
 	"github.com/fatedier/frp/utils/log"
 	"config"
+	"torrent"
+	"encoding/json"
 )
 
 var db *sql.DB
 
 func init() {
-	cfg,_ := tracherConfig.Load()
+	cfg, _ := tracherConfig.Load()
 	log.Debug("初始化数据库")
 	db, _ = sql.Open("mysql", cfg.SQL)
 	db.SetMaxOpenConns(200)
@@ -35,10 +37,10 @@ func Test(meta opendmm.MovieMeta) {
 
 		"actresses=?," +
 		"genres=?," +
-		"directors=?,"+
-		"created_at=?,"+
-		"modified_at=?,"+
-		"release_date=?,"+
+		"directors=?," +
+		"created_at=?," +
+		"modified_at=?," +
+		"release_date=?," +
 		"count = 0")
 
 	checkErr(err)
@@ -48,9 +50,9 @@ func Test(meta opendmm.MovieMeta) {
 		meta.Title,
 		meta.CoverImage,
 		meta.Maker,
-		strings.Join(meta.Actresses,","),
-		strings.Join(meta.Genres,","),
-		strings.Join(meta.Directors,","),
+		strings.Join(meta.Actresses, ","),
+		strings.Join(meta.Genres, ","),
+		strings.Join(meta.Directors, ","),
 		time.Now(),
 		time.Now(),
 		meta.ReleaseDate)
@@ -66,6 +68,26 @@ func updateCount(meta opendmm.MovieMeta) int {
 	rows, err := db.Query("UPDATE av SET  count = count + 1 WHERE code = ?", meta.Code)
 	checkErr(err)
 	return checkCount(rows)
+}
+
+func SaveTorrent(meta opendmm.MovieMeta, teacher torrentUtils.Teacher) {
+	content, _ := json.MarshalIndent(teacher, "", "")
+	stmt, err := db.Prepare("" +
+		"INSERT av_torrent " +
+		"SET " +
+		"code=?, " +
+		"name=?, " +
+		"magnet=?, " +
+		"content=?," +
+		"created_at=?")
+	checkErr(err)
+	stmt.Exec(
+		meta.Code,
+		teacher.Name,
+		teacher.Magnet,
+		content,
+		time.Now(),
+	)
 }
 
 func checkCount(rows *sql.Rows) (count int) {
