@@ -17,3 +17,5 @@
 
 .gitignore
 .idea/
+
+/vendor

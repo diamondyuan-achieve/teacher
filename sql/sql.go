@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"github.com/GeorgeYuen/teacher/config"
 	"github.com/GeorgeYuen/teacher/torrent"
+	"log"
 )
 
 var db *sql.DB
@@ -98,6 +99,6 @@ func checkCount(rows *sql.Rows) (count int) {
 
 func checkErr(err error) {
 	if err != nil {
-		log.Error(err.Error())
+		log.Println(err.Error())
 	}
 }

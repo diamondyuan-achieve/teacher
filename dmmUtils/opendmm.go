@@ -11,7 +11,7 @@ var movieMeta opendmm.MovieMeta
 
 func Search(query string) (opendmm.MovieMeta,error) {
 	log.Println("start search " + query)
-	match := opendmm.Search(query, nil)
+	match := opendmm.Search(query)
 	select {
 	case meta, ok := <-match:
 		if ok {
