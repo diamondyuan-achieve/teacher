@@ -2,10 +2,10 @@ package main
 
 import (
 	"gopkg.in/macaron.v1"
-	"dmmUtils"
 	"encoding/json"
-	"sql"
-	"config"
+	"github.com/GeorgeYuen/teacher/config"
+	"github.com/GeorgeYuen/teacher/sql"
+	"github.com/GeorgeYuen/teacher/dmmUtils"
 )
 
 

@@ -4,10 +4,10 @@ import (
 	"path/filepath"
 	"os"
 	"fmt"
-	"torrent"
-	"sql"
-	"dmmUtils"
 	"strings"
+	"github.com/GeorgeYuen/teacher/torrent"
+	"github.com/GeorgeYuen/teacher/sql"
+	"github.com/GeorgeYuen/teacher/dmmUtils"
 )
 
 func main() {

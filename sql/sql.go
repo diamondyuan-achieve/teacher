@@ -6,17 +6,15 @@ import (
 	"github.com/junzh0u/opendmm"
 	"time"
 	"strings"
-	"github.com/fatedier/frp/utils/log"
-	"config"
-	"torrent"
 	"encoding/json"
+	"github.com/GeorgeYuen/teacher/config"
+	"github.com/GeorgeYuen/teacher/torrent"
 )
 
 var db *sql.DB
 
 func init() {
 	cfg, _ := tracherConfig.Load()
-	log.Debug("初始化数据库")
 	db, _ = sql.Open("mysql", cfg.SQL)
 	db.SetMaxOpenConns(200)
 	db.SetMaxIdleConns(100)
