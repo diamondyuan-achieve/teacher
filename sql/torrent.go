@@ -24,6 +24,9 @@ func SaveData(hash []byte,content []byte,torrent []byte) {
 
 
 func SaveHash(hash string,ip string) {
+
+
+
 	stmt, err := db.Prepare(
 		"INSERT Hash " +
 			"SET hash = ?, "+
