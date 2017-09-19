@@ -10,7 +10,7 @@ func SaveData(hash []byte,content []byte,torrent []byte) {
 		"SET " +
 		"info_hash=?, " +
 		"torrent=?, " +
-		"meta_data_info=?" +
+		"meta_data_info=?," +
 		"created_at=?")
 	checkErr(err)
 	stmt.Exec(
