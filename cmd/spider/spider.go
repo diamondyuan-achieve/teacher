@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"github.com/GeorgeYuen/teacher/sql"
+	"fmt"
 )
 
 type file struct {
@@ -66,11 +67,16 @@ func main() {
 	}()
 	go w.Run()
 
+	var i = 0;
 	config := dht.NewCrawlConfig()
 	config.OnAnnouncePeer = func(infoHash, ip string, port int) {
 		if len(infoHash) == 20 {
+			i++;
 			InfoHash := hex.EncodeToString([]byte(infoHash))
 			tracherSql.SaveHash(InfoHash, ip)
+		}
+		if i % 100 == 0 {
+			fmt.Print("下载了" + "i")
 		}
 		w.Request([]byte(infoHash), ip, port)
 	}
