@@ -9,6 +9,7 @@ import (
 	"github.com/GeorgeYuen/teacher/sql"
 	"fmt"
 	"os"
+	"strconv"
 )
 
 type file struct {
@@ -70,7 +71,7 @@ func main() {
 	}()
 	go w.Run()
 
-	var i = 0;
+	var i int = 0;
 	config := dht.NewCrawlConfig()
 	config.OnAnnouncePeer = func(infoHash, ip string, port int) {
 		if len(infoHash) == 20 {
@@ -79,7 +80,7 @@ func main() {
 			tracherSql.SaveHash(InfoHash, ip)
 		}
 		if i % 100 == 0 {
-			fmt.Print("下载了" + string(i))
+			fmt.Println("下载了" +" "+ strconv.Itoa(i))
 		}
 		w.Request([]byte(infoHash), ip, port)
 	}
