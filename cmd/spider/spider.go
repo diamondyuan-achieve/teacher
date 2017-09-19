@@ -75,7 +75,7 @@ func main() {
 			InfoHash := hex.EncodeToString([]byte(infoHash))
 			tracherSql.SaveHash(InfoHash, ip)
 		}
-		if i % 1000 == 0 {
+		if i % 100 == 0 {
 			fmt.Print("下载了" + string(i))
 		}
 		w.Request([]byte(infoHash), ip, port)
