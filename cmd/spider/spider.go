@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"github.com/GeorgeYuen/teacher/sql"
+	"fmt"
 )
 
 type file struct {
@@ -65,9 +66,13 @@ func main() {
 		}
 	}()
 	go w.Run()
+
+
 	config := dht.NewCrawlConfig()
 	config.OnAnnouncePeer = func(infoHash, ip string, port int) {
-		tracherSql.SaveHash(hex.EncodeToString([]byte(infoHash)),ip)
+		InfoHash := hex.EncodeToString([]byte(infoHash))
+		fmt.Println(InfoHash)
+		tracherSql.SaveHash(InfoHash,ip)
 		w.Request([]byte(infoHash), ip, port)
 	}
 	d := dht.New(config)

@@ -31,8 +31,11 @@ func SaveHash(hash string,ip string) {
 	if err != nil {
 		fmt.Print(err.Error())
 	}
-	stmt.Exec(
+	_,err2 := stmt.Exec(
 		hash,
 		ip,
 	)
+	if err != nil {
+		fmt.Println(err2)
+	}
 }
