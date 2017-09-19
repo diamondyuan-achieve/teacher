@@ -14,7 +14,6 @@ func Load() (cfg *Config, err error) {
 	cfg.Port = defaultConfig.Port
 	cfg.SQL = defaultConfig.SQL
 	sql := os.Getenv("SQL")
-	initConfig(cfg,"teacher.ini")
 	if sql != ""  {
 		cfg.SQL = sql
 	}
@@ -26,7 +25,7 @@ func Load() (cfg *Config, err error) {
 func initConfig(cfg *Config,path string) {
 	f, err := os.Open(path)
 	if err != nil {
-		return 
+		return
 	}
 	defer f.Close()
 
