@@ -3,9 +3,17 @@ package tracherSql
 import (
 	"time"
 	"fmt"
+	"strings"
 )
 
-func SaveData(hash []byte,content []byte,torrent []byte) {
+type HashIp  struct{
+	Hash string
+	Ip string
+}
+
+
+
+func SaveData(hash []byte, content []byte, torrent []byte) {
 	stmt, err := db.Prepare("" +
 		"INSERT magent_table " +
 		"SET " +
@@ -17,27 +25,23 @@ func SaveData(hash []byte,content []byte,torrent []byte) {
 		fmt.Print(err.Error())
 	}
 	stmt.Exec(
-		hash,content,torrent,
+		hash, content, torrent,
 		time.Now(),
 	)
 }
 
 
-func SaveHash(hash string,ip string) {
-
-	stmt, err := db.Prepare(
-		"INSERT Hash " +
-			"SET hash = ?, "+
-			"ip = ?")
-	if err != nil {
-		fmt.Print(err.Error())
+func SaveHash(unsavedRows []HashIp) {
+	valueStrings := make([]string, 0, len(unsavedRows))
+	valueArgs := make([]interface{}, 0, len(unsavedRows) * 2)
+	for _, post := range unsavedRows {
+		valueStrings = append(valueStrings, "(?, ?)")
+		valueArgs = append(valueArgs, post.Hash)
+		valueArgs = append(valueArgs, post.Ip)
 	}
-	_,err2 := stmt.Exec(
-		hash,
-		ip,
-	)
-	stmt.Close()
-	if err != nil {
-		fmt.Println(err2)
+	stmt := fmt.Sprintf("INSERT INTO Hash (hash, ip) VALUES %s", strings.Join(valueStrings, ","))
+	_, err := db.Exec(stmt, valueArgs...)
+	if err!=nil {
+		fmt.Println(err)
 	}
 }

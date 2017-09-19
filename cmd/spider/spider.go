@@ -73,15 +73,19 @@ func main() {
 
 	var i int = 0;
 	config := dht.NewCrawlConfig()
+	hashs := make([]tracherSql.HashIp, 100)
 	config.OnAnnouncePeer = func(infoHash, ip string, port int) {
 		if len(infoHash) == 20 {
-			i++;
-			InfoHash := hex.EncodeToString([]byte(infoHash))
-			tracherSql.SaveHash(InfoHash, ip)
+			hashs[i%100] = tracherSql.HashIp{
+				hex.EncodeToString([]byte(infoHash)),
+				ip,
+			}
+			if i%100 == 99 {
+				tracherSql.SaveHash(hashs)
+				fmt.Println("插入了" + " " + strconv.Itoa(i))
+			}
 		}
-		if i % 100 == 0 {
-			fmt.Println("下载了" +" "+ strconv.Itoa(i))
-		}
+
 		w.Request([]byte(infoHash), ip, port)
 	}
 	d := dht.New(config)
