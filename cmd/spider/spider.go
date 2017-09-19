@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/shiyanhui/dht"
+	"github.com/GeorgeYuen/dht"
 	"net/http"
 	_ "net/http/pprof"
 )
@@ -14,8 +14,11 @@ func main() {
 	}()
 
 	w := dht.NewWire(65536, 1024, 256)
+
 	go func() {
 		for resp := range w.Response() {
+			fmt.Println(resp.IP+" "+string(resp.Port))
+			fmt.Println(resp.Request.IP+" "+string(resp.Request.Port))
 			fmt.Println(resp.InfoHash)
 		}
 	}()

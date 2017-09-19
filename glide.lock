@@ -1,5 +1,5 @@
-hash: 8de50067085055f359d162827388888ac17400767c7fe6b6805062d66ed09905
-updated: 2017-09-19T22:24:53.85422592+08:00
+hash: 56e1438ac7284ec973cbab377a82cbe0e943025cfc1cc77923f03e4518e4a257
+updated: 2017-09-19T23:14:17.398186874+08:00
 imports:
 - name: github.com/anacrolix/missinggo
   version: 5738054f9d3224d164a5e5203ed2ff72439bf97b
@@ -17,7 +17,7 @@ imports:
 - name: github.com/deckarep/golang-set
   version: b3af78e1d186c53529e3c916055d734665f68121
 - name: github.com/GeorgeYuen/dht
-  version: 29e5102b5d2a1f788237bfbb10bc09797f201c2c
+  version: be29c81b6fafde8de3d9dc2a15f679664e793277
 - name: github.com/go-macaron/inject
   version: d8a0b8677191f4380287cfebd08e462217bac7ad
 - name: github.com/go-macaron/macaron
@@ -36,8 +36,6 @@ imports:
   version: 0220086a7069132cb0b0f33273e8429c5b494773
 - name: github.com/PuerkitoBio/goquery
   version: ce645ea5e67a713599b7415f21f0786451fa9554
-- name: github.com/shiyanhui/dht
-  version: e1da8d85dd1419d448c188850e8743c48db17a3f
 - name: github.com/syndtr/goleveldb
   version: b89cc31ef7977104127d34c1bd31ebd1a9db2199
   subpackages:
