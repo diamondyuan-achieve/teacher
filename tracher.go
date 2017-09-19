@@ -1,11 +1,11 @@
 package main
 
 import (
-	"gopkg.in/macaron.v1"
 	"encoding/json"
 	"github.com/GeorgeYuen/teacher/config"
 	"github.com/GeorgeYuen/teacher/sql"
 	"github.com/GeorgeYuen/teacher/dmmUtils"
+	"github.com/go-macaron/macaron"
 )
 
 
