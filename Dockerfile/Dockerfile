@@ -12,6 +12,6 @@ RUN cd /go/src/github.com/GeorgeYuen/teacher/cmd/spider/ \
 
 RUN mkdir /spider
 
-RUN mv /go/src/github.com/GeorgeYuen/teacher/cmd/spider/spide /spider/spider
+RUN mv /go/src/github.com/GeorgeYuen/teacher/cmd/spider/spider /spider/spider
 
 CMD "/spider/spider"
