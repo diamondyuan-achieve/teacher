@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"github.com/GeorgeYuen/teacher/sql"
 	"fmt"
+	"os"
 )
 
 type file struct {
@@ -23,6 +24,8 @@ type bitTorrent struct {
 }
 
 func main() {
+	sql := os.Getenv("SQL")
+	fmt.Println(sql)
 	go func() {
 		http.ListenAndServe(":6060", nil)
 	}()
