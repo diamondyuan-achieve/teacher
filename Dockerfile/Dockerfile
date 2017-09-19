@@ -6,6 +6,8 @@ RUN git clone -b yuanfandi https://github.com/GeorgeYuen/teacher /go/src/github.
 
 RUN cd /go/src/github.com/GeorgeYuen/teacher
 
+RUN ls
+
 RUN glide install
 
 RUN cd /go/src/github.com/GeorgeYuen/teacher/cmd/spider/
