@@ -6,13 +6,19 @@ import (
 	"io"
 	"strings"
 	"strconv"
+	"log"
 )
 
 func Load() (cfg *Config, err error) {
 	cfg = &Config{}
 	cfg.Port = defaultConfig.Port
 	cfg.SQL = defaultConfig.SQL
+	sql := os.Getenv("SQL")
 	initConfig(cfg,"teacher.ini")
+	if sql != ""  {
+		cfg.SQL = sql
+	}
+	log.Println(sql)
 	return cfg,nil
 }
 
