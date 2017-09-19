@@ -10,6 +10,8 @@ RUN cd /go/src/github.com/GeorgeYuen/teacher/ \
 RUN cd /go/src/github.com/GeorgeYuen/teacher/cmd/spider/ \
     && go build
 
-RUN mv /go/src/github.com/GeorgeYuen/teacher/cmd/spider/spider /spider/spider
+RUN mkdir /spider
+
+RUN mv /go/src/github.com/GeorgeYuen/teacher/cmd/spider/spide /spider/spider
 
 CMD "/spider/spider"
