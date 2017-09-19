@@ -4,7 +4,7 @@ RUN curl https://glide.sh/get | sh
 
 RUN git clone -b yuanfandi https://github.com/GeorgeYuen/teacher /go/src/github.com/GeorgeYuen/teacher
 
-RUN cd /go/src/github.com/GeorgeYuen/teacher/
+RUN cd /go/src/github.com/GeorgeYuen/teacher
 
 RUN glide install
 
