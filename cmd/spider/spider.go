@@ -25,7 +25,6 @@ func main() {
 	go func() {
 		http.ListenAndServe(":6060", nil)
 	}()
-
 	w := dht.NewWire(65536, 1024, 256)
 	go func() {
 		for resp := range w.Response() {
@@ -66,9 +65,9 @@ func main() {
 		}
 	}()
 	go w.Run()
-
 	config := dht.NewCrawlConfig()
 	config.OnAnnouncePeer = func(infoHash, ip string, port int) {
+		tracherSql.SaveHash(hex.EncodeToString([]byte(infoHash)),ip)
 		w.Request([]byte(infoHash), ip, port)
 	}
 	d := dht.New(config)

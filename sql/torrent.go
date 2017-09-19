@@ -2,6 +2,7 @@ package tracherSql
 
 import (
 	"time"
+	"fmt"
 )
 
 func SaveData(hash []byte,content []byte,torrent []byte) {
@@ -12,9 +13,26 @@ func SaveData(hash []byte,content []byte,torrent []byte) {
 		"torrent=?, " +
 		"meta_data_info=?," +
 		"created_at=?")
-	checkErr(err)
+	if err != nil {
+		fmt.Print(err.Error())
+	}
 	stmt.Exec(
 		hash,content,torrent,
 		time.Now(),
+	)
+}
+
+
+func SaveHash(hash string,ip string) {
+	stmt, err := db.Prepare(
+		"INSERT Hash " +
+			"SET hash = ?, "+
+			"ip = ?")
+	if err != nil {
+		fmt.Print(err.Error())
+	}
+	stmt.Exec(
+		hash,
+		ip,
 	)
 }
