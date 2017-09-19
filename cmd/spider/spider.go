@@ -76,6 +76,7 @@ func main() {
 	hashs := make([]tracherSql.HashIp, 100)
 	config.OnAnnouncePeer = func(infoHash, ip string, port int) {
 		if len(infoHash) == 20 {
+			i=i+1;
 			hashs[i%100] = tracherSql.HashIp{
 				hex.EncodeToString([]byte(infoHash)),
 				ip,
