@@ -9,3 +9,5 @@ import:
 - package: github.com/shiyanhui/dht
 - package: github.com/go-macaron/macaron
   version: ~1.2.2
+- package: github.com/GeorgeYuen/dht
+  version: ~0.1.0

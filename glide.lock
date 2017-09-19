@@ -1,5 +1,5 @@
-hash: 13233184503cf83c23f810d7ed20fa8ef47e414ae6ed72f3ab83ce4ed94ada84
-updated: 2017-09-19T22:01:16.361452267+08:00
+hash: 8de50067085055f359d162827388888ac17400767c7fe6b6805062d66ed09905
+updated: 2017-09-19T22:24:53.85422592+08:00
 imports:
 - name: github.com/anacrolix/missinggo
   version: 5738054f9d3224d164a5e5203ed2ff72439bf97b
@@ -16,6 +16,8 @@ imports:
   version: 454541ec3da2a73fc34fd049b19ee5777bf19345
 - name: github.com/deckarep/golang-set
   version: b3af78e1d186c53529e3c916055d734665f68121
+- name: github.com/GeorgeYuen/dht
+  version: 29e5102b5d2a1f788237bfbb10bc09797f201c2c
 - name: github.com/go-macaron/inject
   version: d8a0b8677191f4380287cfebd08e462217bac7ad
 - name: github.com/go-macaron/macaron
