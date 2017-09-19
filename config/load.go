@@ -26,7 +26,7 @@ func Load() (cfg *Config, err error) {
 func initConfig(cfg *Config,path string) {
 	f, err := os.Open(path)
 	if err != nil {
-		panic(err)
+		return 
 	}
 	defer f.Close()
 
