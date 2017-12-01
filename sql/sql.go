@@ -7,9 +7,9 @@ import (
 	"time"
 	"strings"
 	"encoding/json"
-	"github.com/GeorgeYuen/teacher/config"
-	"github.com/GeorgeYuen/teacher/torrent"
 	"log"
+	"github.com/DiamondYuan/teacher/config"
+	"github.com/DiamondYuan/teacher/torrent"
 )
 
 var db *sql.DB

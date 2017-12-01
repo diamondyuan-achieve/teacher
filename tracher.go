@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/GeorgeYuen/teacher/config"
-	"github.com/GeorgeYuen/teacher/sql"
-	"github.com/GeorgeYuen/teacher/dmmUtils"
 	"github.com/go-macaron/macaron"
+	"github.com/DiamondYuan/teacher/config"
+	"github.com/DiamondYuan/teacher/sql"
+	"github.com/DiamondYuan/teacher/dmmUtils"
 )
 
 

@@ -5,9 +5,8 @@ import (
 	"os"
 	"fmt"
 	"strings"
-	"github.com/GeorgeYuen/teacher/torrent"
-	"github.com/GeorgeYuen/teacher/sql"
-	"github.com/GeorgeYuen/teacher/dmmUtils"
+	"github.com/DiamondYuan/teacher/torrent"
+	"github.com/DiamondYuan/teacher/sql"
 )
 
 func main() {

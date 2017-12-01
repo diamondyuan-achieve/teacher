@@ -1,4 +1,4 @@
-package: github.com/GeorgeYuen/teacher
+package: github.com/DiamondYuan/teacher
 import:
 - package: github.com/anacrolix/torrent
   subpackages:
